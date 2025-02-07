@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Importando corretamente o Router
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/layout/Structure/Sidebar";
 import CategoryPage from "./pages/CategoryPage";
-import CreateCategory from "./components/Category/CreateCategory";
+import CreateCategory from "./components/layout/Category/CreateCategory";
 import ProductPage from "./pages/ProductPage";
-import CreateProduct from "./components/Products/CreateProduct";
+import CreateProduct from "./components/layout/Product/CreateProduct";
 
 function App() {
   return (

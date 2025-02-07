@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { createProduct } from '../../services/productService';
-import { getCategories } from '../../services/categoryService';
+import { createProduct } from '../../../services/productService';
+import { getCategories } from '../../../services/categoryService';
 
 const CreateProduct = () => {
     const [name, setName] = useState('');

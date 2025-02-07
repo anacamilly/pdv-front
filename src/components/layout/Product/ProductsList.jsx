@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getProducts, deleteProduct } from '../../services/productService'; // Serviço para obter e excluir produtos
+import { getProducts, deleteProduct } from '../../../services/productService';
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);

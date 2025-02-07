@@ -1,5 +1,5 @@
 import React from 'react';
-import CategoryList from '../components/Category/CategoryList';
+import CategoryList from '../components/layout/Category/CategoryList';
 
 const CategoryPage = () => {
   return (

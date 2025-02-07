@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductList from '../components/Products/ProductsList';
+import ProductList from '../components/layout/Product/ProductsList';
 
 const CategoryPage = () => {
   return (
