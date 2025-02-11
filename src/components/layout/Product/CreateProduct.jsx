@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { createProduct } from '../../../services/productService';
 import { getCategories } from '../../../services/categoryService';
+import Breadcrumbs from "../../ui/breadcrumbs";
+import { Link } from "react-router-dom";
 
 const CreateProduct = () => {
     const [name, setName] = useState('');
@@ -64,9 +66,18 @@ const CreateProduct = () => {
 
     const profitMargin = salePrice && costPrice ? (((salePrice - costPrice) / salePrice) * 100).toFixed(2) : '';
 
+    const breadcrumbLinks = [
+        { label: "Products", to: '/products'},
+        { label: "Create Product"}
+    ];
+
+    
     return (
         <div className="p-6">
-            <h1 className="text-2xl  text-gray-700 font-bold mb-6">Create Product</h1>
+            
+      <Breadcrumbs links={breadcrumbLinks} />
+
+            <h1 className="text-2xl text-gray-700 font-bold mb-6">Create Product</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Linha 1: Name e Description */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -77,7 +88,7 @@ const CreateProduct = () => {
                             value={name} 
                             onChange={(e) => setName(e.target.value)} 
                             required 
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                         />
                     </div>
                     <div>
@@ -86,7 +97,7 @@ const CreateProduct = () => {
                             type="text" 
                             value={description} 
                             onChange={(e) => setDescription(e.target.value)} 
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                         />
                     </div>
                 </div>
@@ -100,7 +111,7 @@ const CreateProduct = () => {
                             value={costPrice} 
                             onChange={(e) => setCostPrice(e.target.value)} 
                             required 
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            className="mt-1  bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                         />
                     </div>
                     <div>
@@ -110,7 +121,7 @@ const CreateProduct = () => {
                             value={salePrice} 
                             onChange={(e) => setSalePrice(e.target.value)} 
                             required 
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            className="mt-1  bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                         />
                     </div>
                   
@@ -137,7 +148,7 @@ const CreateProduct = () => {
                             value={quantity} 
                             onChange={(e) => setQuantity(e.target.value)} 
                             required 
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                         />
                     </div>
                     <div>
@@ -146,7 +157,7 @@ const CreateProduct = () => {
                             value={unitOfMeasure} 
                             onChange={(e) => setUnitOfMeasure(e.target.value)} 
                             required 
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                         >
                             <option disabled value="">Select a unit</option>
                             <option value="kg">Kilogram (kg)</option>
@@ -168,7 +179,7 @@ const CreateProduct = () => {
                             value={category} 
                             onChange={(e) => setCategory(e.target.value)} 
                             required 
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                         >
                             <option value="">Select a category</option>
                             {categories.map((cat) => (
@@ -182,7 +193,7 @@ const CreateProduct = () => {
                             type="date" 
                             value={expirationDate} 
                             onChange={(e) => setExpirationDate(e.target.value)} 
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                         />
                     </div>
                 </div>

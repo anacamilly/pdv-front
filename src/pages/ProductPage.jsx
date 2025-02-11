@@ -5,7 +5,6 @@ const CategoryPage = () => {
   return (
     <>
     <div>
-      <h1>product Management</h1>
       <ProductList />
     </div>
     </>
