@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductList from '../../components/layout/Product/ProductsList';
-import TitlePages from '../../components/ui/title/TitlePages';
-import ButtonCreate from '../../components/ui/buttons/ButtonCreate';
+import TitlePages from '../../components/ui/Titles/TitlePages';
+import ButtonCreate from '../../components/ui/Buttons/ButtonCreate';
 
 const ProductPage = () => {
   return (

@@ -29,11 +29,10 @@ const CategoryList = () => {
 
   return (
     <>
-    <div>
-        {message && <p className="text-green-600 p-4">{message}</p>}
+      <div>
+          {message && <p className="text-green-600 p-4">{message}</p>}
 
-        <Table data={categories} columns={columns} />
-
+          <Table data={categories} columns={columns} />
       </div>
     </>
   );

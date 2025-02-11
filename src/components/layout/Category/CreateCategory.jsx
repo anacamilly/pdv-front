@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { createCategory } from "../../../services/categoryService";
 import Breadcrumbs from "../../ui/Breadcrumbs";
-import ButtonSave from '../../ui/buttons/ButtonSave';
-import TitlePages from '../../ui/title/TitlePages';
+import ButtonSave from '../../ui/Buttons/ButtonSave';
+import TitlePages from '../../ui/Titles/TitlePages';
 
 const CreateCategory = () => {
   const [name, setName] = useState('');
@@ -28,32 +28,32 @@ const CreateCategory = () => {
 
   return (
     <>
-    <div className="p-6">
+      <div>
 
-      <Breadcrumbs links={breadcrumbLinks} />
+        <Breadcrumbs links={breadcrumbLinks} />
 
-      <TitlePages title="Create Category"/>
+        <TitlePages title="Create Category"/>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Category Name:</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            className="mt-1 bg-white block w-1/2 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-          />
-        </div>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Category Name:</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="mt-1 bg-white block w-1/2 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            />
+          </div>
 
-        <ButtonSave buttonText="Save Category" />
+          <ButtonSave buttonText="Save Category" />
 
-      </form>
+        </form>
 
-      {message && (
-        <p className="mt-4 text-sm font-medium text-green-600">{message}</p>
-      )}
-    </div>
+        {message && (
+          <p className="mt-4 text-sm font-medium text-green-600">{message}</p>
+        )}
+      </div>
     </>
   );
 };

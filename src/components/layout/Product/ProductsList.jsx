@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getProducts } from '../../../services/productService';
-import ButtonCreate from '../../ui/buttons/ButtonCreate';
+import ButtonCreate from '../../ui/Buttons/ButtonCreate';
 import Table from '../../ui/Tables/Table'; 
 
 const ProductList = () => {

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { createProduct } from '../../../services/productService';
 import { getCategories } from '../../../services/categoryService';
-import Breadcrumbs from "../../ui/Breadcrumbs";
-import { Link } from "react-router-dom";
-import ButtonSave from '../../ui/buttons/ButtonSave';
-import TitlePages from '../../ui/title/TitlePages';
+import Breadcrumbs from '../../ui/Breadcrumbs';
+import ButtonSave from '../../ui/Buttons/ButtonSave';
+import TitlePages from '../../ui/Titles/TitlePages';
 
 const CreateProduct = () => {
     const [name, setName] = useState('');
@@ -75,137 +74,139 @@ const CreateProduct = () => {
 
     
     return (
-        <div className="p-6">
-            
-      <Breadcrumbs links={breadcrumbLinks} />
-
-      <TitlePages title="Create Product"/>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Linha 1: Name e Description */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Name:</label>
-                        <input 
-                            type="text" 
-                            value={name} 
-                            onChange={(e) => setName(e.target.value)} 
-                            required 
-                            className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Description:</label>
-                        <input 
-                            type="text" 
-                            value={description} 
-                            onChange={(e) => setDescription(e.target.value)} 
-                            className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                        />
-                    </div>
-                </div>
-
-                {/* Linha 2: Cost Price, Sale Price, Profit e Profit Margin */}
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Cost Price:</label>
-                        <input 
-                            type="number" 
-                            value={costPrice} 
-                            onChange={(e) => setCostPrice(e.target.value)} 
-                            required 
-                            className="mt-1  bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Sale Price:</label>
-                        <input 
-                            type="number" 
-                            value={salePrice} 
-                            onChange={(e) => setSalePrice(e.target.value)} 
-                            required 
-                            className="mt-1  bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                        />
-                    </div>
-                  
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Profit Margin:</label>
-                        <div className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-100">
-                            {profitMargin}%
-                        </div>
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Profit:</label>
-                        <div className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-100">
-                            {profit}
-                        </div>
-                    </div>
-                </div>
-
-                {/* Linha 3: Quantity e Unit of Measure */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Quantity:</label>
-                        <input 
-                            type="number" 
-                            value={quantity} 
-                            onChange={(e) => setQuantity(e.target.value)} 
-                            required 
-                            className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Unit of Measure:</label>
-                        <select 
-                            value={unitOfMeasure} 
-                            onChange={(e) => setUnitOfMeasure(e.target.value)} 
-                            required 
-                            className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                        >
-                            <option disabled value="">Select a unit</option>
-                            <option value="kg">Kilogram (kg)</option>
-                            <option value="g">Gram (g)</option>
-                            <option value="lb">Pound (lb)</option>
-                            <option value="oz">Ounce (oz)</option>
-                            <option value="l">Liter (L)</option>
-                            <option value="ml">Milliliter (mL)</option>
-                            <option value="unit">Unit</option>
-                        </select>
-                    </div>
-                </div>
-
-                {/* Linha 4: Category e Expiration Date */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Category:</label>
-                        <select 
-                            value={category} 
-                            onChange={(e) => setCategory(e.target.value)} 
-                            required 
-                            className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                        >
-                            <option value="">Select a category</option>
-                            {categories.map((cat) => (
-                                <option key={cat.id} value={cat.id}>{cat.name}</option>
-                            ))}
-                        </select>
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Expiration Date:</label>
-                        <input 
-                            type="date" 
-                            value={expirationDate} 
-                            onChange={(e) => setExpirationDate(e.target.value)} 
-                            className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                        />
-                    </div>
-                </div>
-
-                <ButtonSave buttonText="Save Product" />
+        <>
+            <div>
                 
-            </form>
-            {message && <p className="mt-4 text-sm font-medium text-green-600">{message}</p>}
-        </div>
+                <Breadcrumbs links={breadcrumbLinks} />
+
+                <TitlePages title="Create Product"/>
+
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    {/* Linha 1: Name e Description */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Name:</label>
+                            <input 
+                                type="text" 
+                                value={name} 
+                                onChange={(e) => setName(e.target.value)} 
+                                required 
+                                className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Description:</label>
+                            <input 
+                                type="text" 
+                                value={description} 
+                                onChange={(e) => setDescription(e.target.value)} 
+                                className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Linha 2: Cost Price, Sale Price, Profit e Profit Margin */}
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Cost Price:</label>
+                            <input 
+                                type="number" 
+                                value={costPrice} 
+                                onChange={(e) => setCostPrice(e.target.value)} 
+                                required 
+                                className="mt-1  bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Sale Price:</label>
+                            <input 
+                                type="number" 
+                                value={salePrice} 
+                                onChange={(e) => setSalePrice(e.target.value)} 
+                                required 
+                                className="mt-1  bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            />
+                        </div>
+                    
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Profit Margin:</label>
+                            <div className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-100">
+                                {profitMargin}%
+                            </div>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Profit:</label>
+                            <div className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md bg-gray-100">
+                                {profit}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Linha 3: Quantity e Unit of Measure */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Quantity:</label>
+                            <input 
+                                type="number" 
+                                value={quantity} 
+                                onChange={(e) => setQuantity(e.target.value)} 
+                                required 
+                                className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Unit of Measure:</label>
+                            <select 
+                                value={unitOfMeasure} 
+                                onChange={(e) => setUnitOfMeasure(e.target.value)} 
+                                required 
+                                className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            >
+                                <option disabled value="">Select a unit</option>
+                                <option value="kg">Kilogram (kg)</option>
+                                <option value="g">Gram (g)</option>
+                                <option value="lb">Pound (lb)</option>
+                                <option value="oz">Ounce (oz)</option>
+                                <option value="l">Liter (L)</option>
+                                <option value="ml">Milliliter (mL)</option>
+                                <option value="unit">Unit</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    {/* Linha 4: Category e Expiration Date */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Category:</label>
+                            <select 
+                                value={category} 
+                                onChange={(e) => setCategory(e.target.value)} 
+                                required 
+                                className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            >
+                                <option value="">Select a category</option>
+                                {categories.map((cat) => (
+                                    <option key={cat.id} value={cat.id}>{cat.name}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700">Expiration Date:</label>
+                            <input 
+                                type="date" 
+                                value={expirationDate} 
+                                onChange={(e) => setExpirationDate(e.target.value)} 
+                                className="mt-1 bg-white block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                            />
+                        </div>
+                    </div>
+
+                    <ButtonSave buttonText="Save Product" />
+                    
+                </form>
+                {message && <p className="mt-4 text-sm font-medium text-green-600">{message}</p>}
+            </div>
+        </>
     );
 };
 
