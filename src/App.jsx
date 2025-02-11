@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 import Sidebar from "./components/layout/Structure/Sidebar";
-import CategoryPage from "./pages/CategoryPage";
+import CategoryPage from "./pages/Categories/CategoryPage";
 import CreateCategory from "./components/layout/Category/CreateCategory";
-import ProductPage from "./pages/ProductPage";
+import ProductPage from "./pages/Products/ProductPage";
 import CreateProduct from "./components/layout/Product/CreateProduct";
 
 function App() {
@@ -14,8 +14,8 @@ function App() {
       <div className="flex h-screen">
         <Sidebar />
 
-        <div className="flex-1 flex flex-col overflow-hidden">
-          <div className="flex-1 overflow-y-auto p-6 bg-gray-100">
+        <div className="flex-1 flex flex-col overflow-hidden p-4 bg-gray-100">
+          <div className="flex-1 overflow-y-auto p-6">
             <Routes>
               <Route path="/categories" element={<CategoryPage />} />
               <Route path="/categories/create" element={<CreateCategory />} />

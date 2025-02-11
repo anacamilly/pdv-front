@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { createProduct } from '../../../services/productService';
 import { getCategories } from '../../../services/categoryService';
-import Breadcrumbs from "../../ui/breadcrumbs";
+import Breadcrumbs from "../../ui/Breadcrumbs";
 import { Link } from "react-router-dom";
+import ButtonSave from '../../ui/buttons/ButtonSave';
+import TitlePages from '../../ui/title/TitlePages';
 
 const CreateProduct = () => {
     const [name, setName] = useState('');
@@ -77,7 +79,8 @@ const CreateProduct = () => {
             
       <Breadcrumbs links={breadcrumbLinks} />
 
-            <h1 className="text-2xl text-gray-700 font-bold mb-6">Create Product</h1>
+      <TitlePages title="Create Product"/>
+
             <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Linha 1: Name e Description */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -198,13 +201,8 @@ const CreateProduct = () => {
                     </div>
                 </div>
 
-                {/* Botão de Envio */}
-                <button 
-                    type="submit" 
-                    className="mt-4 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                    Create Product
-                </button>
+                <ButtonSave buttonText="Save Product" />
+                
             </form>
             {message && <p className="mt-4 text-sm font-medium text-green-600">{message}</p>}
         </div>

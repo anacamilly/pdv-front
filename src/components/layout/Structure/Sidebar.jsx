@@ -63,14 +63,14 @@ const Sidebar = () => {
 
 const menuItems = [
   { label: "Home", icon: faHouse, route: "/" },
-  { label: "Sale", icon: faDollarSign, route: "/" },
+  { label: "Sale", icon: faDollarSign, route: "/sale" },
   { label: "Categories", icon: faLayerGroup, route: "/categories" },
-  { label: "Suppliers", icon: faTruckFast, route: "/products" },
+  { label: "Suppliers", icon: faTruckFast, route: "/suppliers" },
   { label: "Products", icon: faBox, route: "/products" },
-  { label: "Sales", icon: faCartShopping, route: "/products" },
-  { label: "Stock", icon: faBoxesStacked, route: "/products" },
-  { label: "Workers", icon: faUserTie, route: "/docs" },
-  { label: "Users", icon: faUsers, route: "/products" }
+  { label: "Sales", icon: faCartShopping, route: "/sales" },
+  { label: "Stock", icon: faBoxesStacked, route: "/stock" },
+  { label: "Workers", icon: faUserTie, route: "/workers" },
+  { label: "Users", icon: faUsers, route: "/users" }
   
 ];
 
